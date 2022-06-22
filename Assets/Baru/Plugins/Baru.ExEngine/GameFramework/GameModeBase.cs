@@ -130,21 +130,53 @@ public class GameModeBase : MonoBehaviour
 
     protected virtual void FocusGame()
     {
-
+        LogSystem.Log($"{GetType().Name}::FocusGame", "GameModeBase");
     }
 
     protected virtual void OutFocusGame()
     {
+        LogSystem.Log($"{GetType().Name}::OutFocusGame", "GameModeBase");
+    }
 
+    protected virtual void PauseGame()
+    {
+        LogSystem.Log($"{GetType().Name}::PauseGame", "GameModeBase");
+    }
+
+    protected virtual void ResumeGame()
+    {
+        LogSystem.Log($"{GetType().Name}::ResumeGame", "GameModeBase");
     }
 
     protected virtual void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        LogSystem.Log($"{GetType().Name}::OnSceneLoaded", $"{scene.name}");
 
+        if(LoadSceneMode.Single == mode)
+        {
+            //mPlayerController.mGameHUD.mUIRoot.SceneLoaded();
+        }
+        else if(LoadSceneMode.Additive == mode)
+        {
+            SceneManager.SetActiveScene(scene);
+
+            GameObject[] gos = scene.GetRootGameObjects();
+            foreach(GameObject go in gos)
+            {
+                
+            }
+        }
     }
 
     protected virtual void OnSceneUnLoaded(Scene scene)
     {
+        LogSystem.Log($"{GetType().Name}::OnSceneUnLoaded", $"{scene.name}");
+    }
 
+    public virtual IEnumerable CoSceneLoadedComplete(string sceneName)
+    {
+        LogSystem.Log($"{GetType().Name}::CoSceneLoadedComplete", sceneName);
+
+        yield break;
     }
 }
