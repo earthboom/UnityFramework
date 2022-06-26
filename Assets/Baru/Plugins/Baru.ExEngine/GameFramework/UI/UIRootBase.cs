@@ -22,6 +22,7 @@ public class UIRootBase : MonoBehaviour
     RectTransform mRectRansform;
     public RectTransform mCanvasRectTransform;
 
+    //Dictionary<Type, UIWndBase> mStaticUIWnds = new Dictionary<Type, UIWndBase>();
 
     protected virtual void Awake()
     {
