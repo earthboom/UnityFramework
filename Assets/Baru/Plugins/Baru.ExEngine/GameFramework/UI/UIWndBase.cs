@@ -69,6 +69,11 @@ public partial class UIWndBase : MonoBehaviour
         }
     }
 
+    protected virtual void Update()
+    {
+        
+    }
+
     protected virtual void OnDestroy()
     {
         Clear();
@@ -76,17 +81,6 @@ public partial class UIWndBase : MonoBehaviour
 
     public virtual bool Init(UIRootBase uiRoot, params object[] param)
     {
-        mUIRoot = uiRoot;
-        if (true == mInit)
-            LogSystem.Log($"{GetType().Name}::Init - Error", "minit true");
-        else
-            mInit = true;
-
-        SetButtonClickEvent((Button button) =>
-        {
-
-        });
-
         return true;
     }
 
@@ -111,18 +105,6 @@ public partial class UIWndBase : MonoBehaviour
     public bool IsOpen()
     {
         return gameObject.activeSelf;
-    }
-
-    public void SetButtonClickEvent(System.Action<Button> action)
-    {
-        var buttons = mRectTransform.GetComponentsInChildren<Button>();
-        foreach(var button in buttons)
-        {
-            button.onClick.AddListener(() =>
-            {
-                action?.Invoke(button);
-            });
-        }
     }
 
     void MakeUIControl()
