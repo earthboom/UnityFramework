@@ -100,8 +100,7 @@ public partial class UIWndBase : MonoBehaviour
             case UIVisibleTweenType.None:
                 break;
             case UIVisibleTweenType.Fade:
-                void Close_Disappearing()
-();
+                Close_Disappearing();
                 break;
             case UIVisibleTweenType.MoveLeftToCenter:
                 break;

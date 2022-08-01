@@ -22,7 +22,7 @@ public class AudioUIHandler : AudioBaseHandler
         foreach (AudioClip clip in mAudioClipList)
             mAudioClips.Add(clip.name, clip);
 
-
+        ResourceSystem.Instance.ResourceLoaderResources.LoadLocation
     }
 
     public bool Play(string name)
